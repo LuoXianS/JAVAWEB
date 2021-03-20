@@ -1,0 +1,56 @@
+﻿<html>
+    <head>
+        <meta charset="utf-8">
+    <title>登录</title>
+    <style>
+        .fontsize {
+            margin-top: 20px;
+            margin-left: 650px;
+        }
+    </style>
+        <script src="jquery-1.9.1.min.js"></script>
+
+            <script>
+                function myck(type) {
+                    var input_username = jQuery("#username");
+                    var input_pwd = jQuery("#pwd");
+                    if (type == 1) {
+                        if (input_username.val().trim() == "") {
+                            alert("请输入当前用户名!");
+                            //设置光标在当前框
+                            input_username.focus();
+                            return false;
+                        }
+                        if (input_pwd.val().trim() == "") {
+                            alert("请输入密码");
+                            //设置光标在当前框
+                            input_pwd.focus();
+                            return false;
+                        } alert("登录成功");
+                    } else if (type == 2) {
+                        if (confirm("是否确认清空?")) {
+                            input_username.val("");
+                            input_pwd.val("");
+                        }
+                    }
+                }
+        </script>
+
+    </head>
+    <body>
+        <div style="margin-right:100px;margin-left:700px">
+            <span style="  font-size: 60px;">登录</span>
+        </div>
+        <div class="fontsize">
+            用户名: <input type="text"placeholder="请输入用户名" id="username"/>
+        </div>
+        <div class="fontsize">
+            &nbsp;&nbsp;密 码: <input type="password" placeholder="请输入密码"id="pwd" />
+        </div >
+        <div style="margin-top:20px;margin-left:705px;">
+            <input type="button" value="提交" onclick="myck(1)"/>
+            <input type="button" value="清空" onclick="myck(2)" />
+        </div>
+
+     </body>
+</html>
