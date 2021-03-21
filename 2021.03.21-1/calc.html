@@ -1,0 +1,63 @@
+﻿<html>
+<head>
+    <meta charset="utf-8">
+    <title>计算器</title>
+    <style>
+        .func {
+            margin-top: 20px;
+            margin-left: 650px;
+        }
+    </style>
+    <script>
+        function myck(type) {
+            var num1 = document.getElementById("num1");
+            var num2 = document.getElementById("num2");
+            if (type == 1) {
+                var result = parseInt(num1.value) + parseInt(num2.value);
+                alert(result);
+                document.getElementById("resultDiv").innerText = "最终计算结果是:" + result ;
+            } else if (type == 2) {
+                if (confirm("是否要清空?")) {
+                    num1.value = "";
+                    num2.value = "";
+                    document.getElementById("resultDiv").innerText = "";
+                }
+            } else if (type == 3) {
+                //实现减法;
+                var result = parseInt(num1.value) - parseInt(num2.value);
+                alert(result);
+                document.getElementById("resultDiv").innerText = "最终计算结果是:" + result;
+            }
+            else if(type ==4){
+                //实现乘法
+                var result = parseInt(num1.value) * parseInt(num2.value);
+                alert(result);
+                document.getElementById("resultDiv").innerText = "最终计算结果是:" + result;
+            }
+        }
+
+    </script>
+
+</head>
+    <body>
+        <div style="margin-top:100px;margin-left:700px">
+            加法计算器
+        </div>
+        <div class="func">
+            数字1:<input type="number" placeholder="请输入数字"id= "num1"/>
+        </div>
+        <div class="func">
+            数字1:<input type="number" placeholder="请输入数字" id="num2" />
+        </div>
+        <div style="margin-top:20px;margin-left:700px">
+            <input type="button" onclick="myck(1) " value="加法" />
+            <input type="button" onclick="myck(3) " value="减法" />
+            <input type="button" onclick="myck(4) " value="乘法" />
+            <input type="button" onclick="myck(2) " value="清空" />
+        </div>
+        <div class="func" id="resultDiv">
+
+        </div>
+    </body>
+
+</html>
