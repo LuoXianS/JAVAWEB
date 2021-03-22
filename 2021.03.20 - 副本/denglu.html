@@ -1,16 +1,9 @@
 ﻿<html>
     <head>
-        <meta charset="utf-8">
-    <title>登录</title>
-    <style>
-        .fontsize {
-            margin-top: 20px;
-            margin-left: 650px;
-        }
-    </style>
+         <meta charset="utf-8">
+         <title>登录</title>
         <script src="jquery-1.9.1.min.js"></script>
-
-            <script>
+        <script>
                 function myck(type) {
                     var input_username = jQuery("#username");
                     var input_pwd = jQuery("#pwd");
@@ -35,22 +28,13 @@
                     }
                 }
         </script>
-
     </head>
     <body>
-        <div style="margin-right:100px;margin-left:700px">
-            <span style="  font-size: 60px;">登录</span>
-        </div>
-        <div class="fontsize">
-            用户名: <input type="text"placeholder="请输入用户名" id="username"/>
-        </div>
-        <div class="fontsize">
-            &nbsp;&nbsp;密 码: <input type="password" placeholder="请输入密码"id="pwd" />
-        </div >
-        <div style="margin-top:20px;margin-left:705px;">
-            <input type="button" value="提交" onclick="myck(1)"/>
+        <div style="text-align:center">
+            <span style="  font-size: 60px;">登录</span><p></p>
+            用户名: <input type="text" placeholder="请输入用户名" id="username" /><p></p>
+            &nbsp;&nbsp;密 码: <input type="password" placeholder="请输入密码" id="pwd" /><p></p>
+            <input type="button" value="提交" onclick="myck(1)" />
             <input type="button" value="清空" onclick="myck(2)" />
-        </div>
-
      </body>
 </html>
