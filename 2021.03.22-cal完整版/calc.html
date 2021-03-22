@@ -1,0 +1,53 @@
+﻿<html>
+    <head>
+        <meta charset="utf-8">
+        <title>计算器</title>
+        <script src="jquery-1.9.1.min.js"></script>;
+        <script>
+            function myck(type){
+                var num1 = jQuery("#num1");
+                var num2 = jQuery("#num2");
+                if(type==1){
+                    // 计算操作
+                    var result = parseInt(num1.val()) + parseInt(num2.val());
+                    alert(result);
+                    // document.getElementById("resultDiv").innerText ="最终计算结果："+result;
+                    jQuery("0#resultDiv").text = "最终计算结果：" + result;
+
+                }else if(type==2){
+                    if(confirm("是否正确清空？")){
+                        // 清空
+                        num1.val("") ;
+                        num2.val("") ;
+                    }
+                } else if (type == 3) {
+                    var result = parseInt(num1.val()) - parseInt(num2.val());
+                    alert(result);
+                    jQuery("0#resultDiv").text = "最终计算结果：" + result;
+                    //.getElementById("resultDiv").innerText = "最终计算结果：" +result;
+                    //相减
+                } else if (type == 4) {
+                    var result = parseInt(num1.val()) * parseInt(num2.val());
+                    alert(result);
+                    jQuery("0#resultDiv").text = "最终计算结果：" * result;
+                    //document.getElementById("resultDiv").innerText = "最终计算结果：" +result;
+                    //相乘
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div style="text-align:center">
+           <span style="font-size: 60px;">计算器</span><p></p> 
+            数字1：<input id="num1" type="number" placeholder="请输入数字1"><p></p> 
+            数字2：<input id="num2" type="number" placeholder="请输入数字2"><p></p> 
+            <input type="button" onclick="myck(1)" value="加 法">
+            <input type="button" onclick="myck(2)" value="清 空">
+            <input type="button" onclick="myck(3)" value="减 法">
+            <input type="button" onclick="myck(4)" value="乘 法">
+        <div id="resultDiv">
+
+        </div>
+    </body>
+ 
+</html>
