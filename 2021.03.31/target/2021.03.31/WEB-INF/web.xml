@@ -7,6 +7,14 @@
          metadata-complete="true">
 
   <servlet>
+    <servlet-name>session</servlet-name>
+    <servlet-class>session</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>session</servlet-name>
+    <url-pattern>/session</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>file</servlet-name>
     <servlet-class>file</servlet-class>
   </servlet>
