@@ -26,7 +26,7 @@ public class UserinfoDao {
         boolean result = false;
         if (userinfo.getPassword() != null && userinfo.getUsername() != null) {
             Connection connection = DBunit.getConnection();
-            String sql = "select * from userinfo where username =? and password =?";
+            String sql = "select * from userinfo where username =? "+"and password =? andstate=1";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1,userinfo.getUsername());
             statement.setString(2,userinfo.getPassword());

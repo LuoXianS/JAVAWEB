@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加文章</title>
+    <script src="jquery-1.9.1.min.js"></script>
+    <script>
+        function mysub(type) {
+            var content = jQuery("#content");
+            var title = jQuery("#title");
+            if (type == 2){
+                if (confirm("是否要清空")){
+                    content.val("");
+                    title.val("");
+                }
+            }
+            if (title.val().trim() ==""){
+                alert("请先输入正文");
+                title.focus();
+                return  false;
+            }
+            if (content.val().trim() == ""){
+                alert("请先输入标题");
+                content.focus();
+                return false;
+            }
+            jQuery.getJSON("addart",{"title":title.val(),"content":content.val()},
+                function (data) {
+                if (data!= null && data.succ ==1){
+                    alert("添加成功");
+                }else{
+                    alert("添加失败")
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+<div style="margin-left: 50px;margin-top: 20px;">
+    <h1>添加文章</h1>
+    标题:<input id="title" name="title" type="text"><p></p>
+    内容:<textarea id="content" name="content"  style="width: 50%;height: 300px;" ></textarea><p></p>
+    <input type="button" onclick="mysub(1)" value="提交">
+    <input type="button" onclick="mysub(2)" value="清空">
+</div>
+</body>
+</html>

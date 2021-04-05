@@ -5,10 +5,24 @@
     <title>文章列表</title>
     <script src="jquery-1.9.1.min.js"></script>
     <script>
+        //文章删除操作
+         function mydel(id) {
+             if (confirm("确认要删除?")){
+                 jQuery.getJSON("del",{"id":id},function (data) {
+                     if (data!= null && data.succ ==1){
+                         alert("删除成功");
+                         location.href = location.href;
+                 } else{
+                         alert("删除失败");
+
+                     }
+                 });
+             }
+        }
         jQuery(function () {
             //当加载完界面在执行
             jQuery.getJSON("article",{},function (data) {
-                if (data!=null&&data.list!=null&&data.list.length >0){
+                if (data!=null&&data.list!=null){
                     jQuery("#tab").html("<tr>\n" +
                         "    <td>\n" +
                         "        编号\n" +
@@ -43,7 +57,7 @@
                         articleinfo.rcount + "                \n" +
                         "            </td>\n" +
                         "            <td>\n" +
-                        "                修改 删除\n" +
+                        "                修改 <a href = 'javascript:mydel("+articleinfo.id+");'>删除</a>\n" +
                         "            </td>\n" +
                         "        </tr>";
                 }
@@ -53,12 +67,12 @@
             }
             });
         });
-
     </script>
 </head>
 <body>
 <div style="text-align: center;margin-top: 70px">
 <h1>文章列表</h1>
+    <a href="addart.html">添加文章</a>
 <table  id="tab" style="width: 80%;margin-left: 100px;" border="1" cellspacing="0">
     <tr>
         <td>

@@ -25,9 +25,7 @@ public class login extends HttpServlet {
         int state = -1;
         String username  = request.getParameter("username");
         String password  = request.getParameter("password");
-        if (username == null || password == null ){
-            msg = "参数错误";
-        }else{
+        if (username != null && password != null ){
             Userinfo userinfo = new Userinfo();
             userinfo.setUsername(username);
             userinfo.setPassword(password);
@@ -43,6 +41,8 @@ public class login extends HttpServlet {
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
+        }else {
+            msg = "参数错误";
         }
         HashMap<String,Object> map = new HashMap<>();
         map.put("state",state);
