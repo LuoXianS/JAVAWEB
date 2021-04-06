@@ -53,4 +53,31 @@ public class ArticleinfoDao {
         DBunit.close(connection,statement,null);
         return result;
     }
+    public int update(String title ,String content ,int id) throws SQLException {
+        int result = 0;
+        Connection connection =DBunit.getConnection();
+        String sql = "update articleinfo set title =?,content =? where  id =?";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setString(1,title);
+        statement.setString(2,content);
+        statement.setInt(3,id);
+        result = statement.executeUpdate();
+        DBunit.close(connection,statement,null);
+        return result;
+    }
+
+    public Articleinfo init(int id) throws SQLException {
+        Articleinfo articleinfo = new Articleinfo();
+        Connection connection = DBunit.getConnection();
+        String sql = "select * from articleinfo where id = ?";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setInt(1,id);
+        ResultSet resultSet = statement.executeQuery();
+        if (resultSet.next()){
+            articleinfo.setTitle(resultSet.getString("title"));
+            articleinfo.setContent(resultSet.getString("content"));
+        }
+        DBunit.close(connection,statement,resultSet);
+        return articleinfo;
+    }
 }

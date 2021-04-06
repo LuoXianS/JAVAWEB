@@ -5,6 +5,25 @@
                       http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1"
          metadata-complete="true">
+  init
+  <!--显示文章-->
+  <servlet>
+    <servlet-name>init</servlet-name>
+    <servlet-class>server.init</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>init</servlet-name>
+    <url-pattern>/init</url-pattern>
+  </servlet-mapping>
+  <!--修改文章-->
+  <servlet>
+    <servlet-name>update</servlet-name>
+    <servlet-class>server.update</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>update</servlet-name>
+    <url-pattern>/update</url-pattern>
+  </servlet-mapping>
   <!--添加文章-->
   <servlet>
     <servlet-name>addart</servlet-name>
