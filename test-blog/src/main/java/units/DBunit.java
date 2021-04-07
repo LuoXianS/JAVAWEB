@@ -12,7 +12,7 @@ public class DBunit {
     public static Connection getConnection() throws SQLException {
         if (dataSource == null) {
             dataSource = new MysqlDataSource();
-            dataSource.setURL("jdbc:mysql://127.0.0.1:3306/blog?charactionEncoding=utf-8");
+            dataSource.setURL("jdbc:mysql://127.0.0.1:3306/blog?characterEncoding=utf-8");
             dataSource.setUser("root");
             dataSource.setPassword("123456");
         }

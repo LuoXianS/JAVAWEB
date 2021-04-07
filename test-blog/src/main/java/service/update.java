@@ -1,7 +1,6 @@
-package server;
+package service;
 
 import Dao.ArticleinfoDao;
-import models.Userinfo;
 import units.ResultJson;
 
 import javax.servlet.ServletException;
@@ -13,40 +12,37 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.HashMap;
 
-public class addart extends HttpServlet {
+public class update extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         this.doGet(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        //接收前端信息
-        int succ = 0;
         String msg = "";
+        int succ = 0;
+        int id = Integer.parseInt(request.getParameter("id"));
         String title = request.getParameter("title");
         String content = request.getParameter("content");
-        //操作数据库
-        if (content != null &&title!=null){
+        if (title != null && content != null && !title.equals("")&& !content.equals("")){
             HttpSession session = request.getSession(false);
-            if (session!= null && session.getAttribute("userinfo")!=null
-                &&!session.equals("")&&!session.getAttribute("userinfo").equals("")){
-                Userinfo userinfo = (Userinfo)session.getAttribute("userinfo");
+            if (session!= null && session.getAttribute("userinfo")!=null){
                 ArticleinfoDao articleinfoDao = new ArticleinfoDao();
                 try {
-                    succ=articleinfoDao.addart(title,content,userinfo.getId());
+                    succ = articleinfoDao.update(title,content,id);
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();
                 }
             }else{
-                msg = "不合法登录";
+                msg  ="非法登录,登录异常";
             }
         }else{
-            msg = "操作失败,参数出错";
+             msg = "修改失败,请重新再试";
         }
         HashMap<String,Object> map = new HashMap<>();
         map.put("succ",succ);
         map.put("msg",msg);
         ResultJson.writeMap(response,map);
     }
+
 }

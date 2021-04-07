@@ -4,12 +4,12 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
                       http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1"
-         metadata-complete="true">
+         metadata-complete="false">
   init
   <!--显示文章-->
   <servlet>
     <servlet-name>init</servlet-name>
-    <servlet-class>server.init</servlet-class>
+    <servlet-class>service.init</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>init</servlet-name>
@@ -18,7 +18,7 @@
   <!--修改文章-->
   <servlet>
     <servlet-name>update</servlet-name>
-    <servlet-class>server.update</servlet-class>
+    <servlet-class>service.update</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>update</servlet-name>
@@ -27,7 +27,7 @@
   <!--添加文章-->
   <servlet>
     <servlet-name>addart</servlet-name>
-    <servlet-class>server.addart</servlet-class>
+    <servlet-class>service.addart</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>addart</servlet-name>
@@ -36,7 +36,7 @@
   <!--删除文章-->
   <servlet>
     <servlet-name>del</servlet-name>
-    <servlet-class>server.del</servlet-class>
+    <servlet-class>service.del</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>del</servlet-name>
@@ -46,7 +46,7 @@
   <!--文章列表-->
   <servlet>
     <servlet-name>article</servlet-name>
-    <servlet-class>server.article</servlet-class>
+    <servlet-class>service.article</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>article</servlet-name>
@@ -55,7 +55,7 @@
 <!--注册-->
   <servlet>
     <servlet-name>reg</servlet-name>
-    <servlet-class>server.reg</servlet-class>
+    <servlet-class>service.reg</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>reg</servlet-name>
@@ -64,7 +64,7 @@
   <!--登录-->
   <servlet>
   <servlet-name>login</servlet-name>
-  <servlet-class>server.login</servlet-class>
+  <servlet-class>service.login</servlet-class>
 </servlet>
 <servlet-mapping>
 <servlet-name>login</servlet-name>
