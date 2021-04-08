@@ -24,8 +24,8 @@ public class ArticleinfoDao {
             articleinfo.setId(resultSet.getInt("id"));
             articleinfo.setContent(resultSet.getString("content"));
             articleinfo.setTitle(resultSet.getString("title"));
-            articleinfo.setCreate_time(resultSet.getTime("create_time"));
-            articleinfo.setUpdate_time(resultSet.getTime("update_time"));
+            articleinfo.setCreate_time(resultSet.getDate("create_time"));
+            articleinfo.setUpdate_time(resultSet.getDate("update_time"));
             articleinfo.setRcount(resultSet.getInt("rcount"));
             list.add(articleinfo);
         }

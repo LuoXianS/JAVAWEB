@@ -5,6 +5,16 @@
     <title>文章列表</title>
     <script src="jquery-1.9.1.min.js"></script>
     <script>
+        function datefm(timespan) {
+            var date = new Date(timespan);
+            // 获得年份
+            var y = date.getFullYear();
+            // 获得月份【注意+1】
+            var m = date.getMonth() + 1;
+            // 获得日期
+            var d = date.getDate();
+            return y + "-" + m + "-" + d;
+        }
         //文章删除操作
          function mydel(id) {
              if (confirm("确认要删除?")){
@@ -51,7 +61,7 @@
                         articleinfo.title + "\n" +
                         "            </td>\n" +
                         "            <td>\n" +
-                        articleinfo.createtime + "                \n" +
+                        datefm(articleinfo.create_time) + "                \n" +
                         "            </td>\n" +
                         "            <td>\n" +
                         articleinfo.rcount + "                \n" +
