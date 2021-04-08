@@ -69,17 +69,19 @@ public class ArticleinfoDao {
         DBunit.close(connection, statement, null);
         return result;
     }
-
-    public Articleinfo init(int id) throws SQLException {
-        Articleinfo articleinfo = new Articleinfo();
+    public ArticleinfoVo init(int id) throws SQLException {
+        ArticleinfoVo articleinfo = new ArticleinfoVo();
         Connection connection = DBunit.getConnection();
-        String sql = "select * from articleinfo where id = ?";
+        String sql = "select a.* ,u.username from articleinfo a left join userinfo u on u.id = a.user_id and  a.id = ?";
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setInt(1, id);
         ResultSet resultSet = statement.executeQuery();
         if (resultSet.next()) {
             articleinfo.setTitle(resultSet.getString("title"));
             articleinfo.setContent(resultSet.getString("content"));
+            articleinfo.setRcount(resultSet.getInt("rcount"));
+            articleinfo.setCreate_time(resultSet.getDate("create_time"));
+            articleinfo.setUsername(resultSet.getString("username"));
         }
         DBunit.close(connection, statement, resultSet);
         return articleinfo;
@@ -121,5 +123,16 @@ public class ArticleinfoDao {
             list.add(vo);
         }
         return list;
+    }
+
+    public int upcount(int id) throws SQLException {
+        int result = 0;
+        Connection connection = DBunit.getConnection();
+        String sql = "update articleinfo set rcount = rcount+1 where id = ?";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setInt(1,id);
+        result = statement.executeUpdate();
+        DBunit.close(connection,statement,null);
+        return result;
     }
 }
