@@ -14,7 +14,7 @@ public class DBunit {
             dataSource = new MysqlDataSource();
             dataSource.setURL("jdbc:mysql://127.0.0.1:3306/blog?characterEncoding=utf-8");
             dataSource.setUser("root");
-            dataSource.setPassword("123456");
+            dataSource.setPassword("12345678");
         }
         return dataSource.getConnection();
     }
