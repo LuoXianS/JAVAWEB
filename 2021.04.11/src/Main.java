@@ -1,3 +1,5 @@
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
+
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -20,10 +22,59 @@ class Solution {
         return 0;
 
     }
-
 }
-public class Main{
-    public static void main(String[] args) {
+    public class Main{
+    //进制转换
+            public static void main(String[]args){
+                Scanner scanner = new Scanner(System.in);
+                int M = scanner.nextInt();
+                int N = scanner.nextInt();
+                if (M == 0) {
+                    System.out.println("0");
+                    return;
+                }
+                boolean flag = true;
+                if (M < 0) {
+                    flag = false;
+                    M = -M;
+                }
+                String map = "0123456789ABCDEF";
+                StringBuffer str = new StringBuffer();
+                while (M != 0) {
+                    str.append(map.charAt(M % N));
+                    M = M / N;
+                }
+                if (flag == false) {
+                    System.out.println("-" + str.reverse().toString());
+                } else {
+                    System.out.println(str.reverse().toString());
+                }
+
+            }
+        public static void main9(String[] args) {
+            Base base = new Base();
+            System.out.println(base.solve(256, 16));
+        }
+        public static void main8(String[] args) {
+            //糖果问题
+                Scanner scanner = new Scanner(System.in);
+                int M = scanner.nextInt();
+                int N = scanner.nextInt();
+                int x = scanner.nextInt();
+                int y = scanner.nextInt();
+                int z = scanner.nextInt();
+                int f = scanner.nextInt();
+                int A = (x+z)/2;
+                int B = (z-x)/2;
+                int C = (f-y)/2;
+                int B1= (y+f)/2;
+                if ( (x+z)%2 == 0 && ((z-x))%2==0 && (f-y)%2 == 0 && (y+f)%2 == 0 && B == B1){
+                    System.out.println(A+" "+B+" "+C+" ");
+                }else{
+                    System.out.println("No");
+                }
+            }
+    public static void main7(String[] args) {
         Solution Solution = new Solution();
         int[] arr = {1,1,2,3,5,5,5,5,5};
         int a= Solution.MoreThanHalfNum_Solution(arr);
