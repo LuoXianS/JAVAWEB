@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 class Base {
+
     public String solve(int M, int N){
         if (M==0){
             return  "0";

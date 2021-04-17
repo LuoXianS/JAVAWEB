@@ -1,3 +1,4 @@
+import com.sun.org.apache.xpath.internal.objects.XBoolean;
 import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 
 import java.util.Arrays;
@@ -24,8 +25,56 @@ class Solution {
     }
 }
     public class Main{
+    //连续最大和
+            public static void main(String[] args){
+                Scanner sc = new Scanner(System.in);
+                int n = sc.nextInt();
+                int[] arr = new int[n];
+                for(int i=0;i<n;i++){
+                    arr[i] = sc.nextInt();
+                }
+                int max = arr[0];
+                int cur = arr[0];
+                for (int i = 1; i <arr.length; i++) {
+                    cur = Math.max(cur+arr[i],arr[i]);
+                    if (cur>max){
+                        max = cur;
+                    }
+                }
+                System.out.println(max);
+
+            }
+
+    //统计回文
+        public static Boolean huiWen(StringBuffer stringBuffer){
+            int a = 0;
+            int b  = stringBuffer.length()-1;
+            while (a<b) {
+                if (stringBuffer.charAt(a)!=stringBuffer.charAt(b)){
+                    return false;
+                }
+                a++;
+                b--;
+            }
+            return  true;
+        }
+        public static void main11(String[] args) {
+            Scanner scanner = new Scanner(System.in);
+            String str = scanner.next();
+            String str1 = scanner.next();
+            int count = 0;
+            for (int i = 0; i <=str.length() ; i++) {
+                StringBuffer stringBuffer = new StringBuffer(str);
+                stringBuffer.insert(i,str1);
+                Boolean flag = huiWen(stringBuffer);
+                if (flag){
+                    count++;
+                }
+            }
+            System.out.println(count);
+        }
     //进制转换
-            public static void main(String[]args){
+            public static void main10(String[]args){
                 Scanner scanner = new Scanner(System.in);
                 int M = scanner.nextInt();
                 int N = scanner.nextInt();
